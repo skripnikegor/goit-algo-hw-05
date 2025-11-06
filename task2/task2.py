@@ -20,7 +20,7 @@ def generator_numbers(text: str):
         raise TypeError("Argument 'text' must be a string.")
     
     # find all numbers by match in the text
-    match = re.findall("([0-9]+[,.]+[0-9]+)", text)
+    match = re.findall("(\s+[0-9]+[,.]+[0-9]+\s)", text)
     
     # if no mathes return an empty generator
     if not match:
@@ -61,5 +61,13 @@ def sum_profit(text: str, func: Callable):
 
 
 text = "Загальний дохід працівника складається з декількох частин: 1000.01 як основний дохід, доповнений додатковими надходженнями 27.45 і 324.00 доларів."
-
 print(sum_profit(text, generator_numbers))
+
+text2 = "124.123 Загальний дохід працівника складається з декількох частин: 1000.01 як основний дохід, доповнений додатковими надходженнями 27.45 і 324.00 доларів."
+print(sum_profit(text2, generator_numbers))
+
+text3 = ""
+print(sum_profit(text3, generator_numbers))
+
+text4 = "1234.23 12434.12"
+print(sum_profit(text4, generator_numbers))
